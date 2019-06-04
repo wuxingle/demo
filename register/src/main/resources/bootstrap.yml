@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: register
+server:
+  port: 8881
+eureka:
+  instance:
+    hostname: localhost
+  server:
+    enable-self-preservation: true
+    eviction-interval-timer-in-ms: 60001
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+logging:
+  level:
+    root: info
+  file: logs/${spring.application.name}.log

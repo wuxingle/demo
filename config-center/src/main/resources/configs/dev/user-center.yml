@@ -1,0 +1,64 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
+    username: root
+    password: root
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 20
+      connection-test-query: SELECT 1
+  redis:
+    host: localhost
+    port: 6379
+    password:
+    timeout: 10s
+    lettuce:
+      pool:
+        min-idle: 0
+        max-idle: 8
+        max-active: 8
+        max-wait: -1ms
+  mvc:
+    servlet:
+      load-on-startup: 1
+  aop:
+    proxy-target-class: true
+  zipkin:
+    base-url: http://localhost:9411
+    enabled: true
+    sender:
+      type: web
+logging:
+  level:
+    root: info
+    com.suibuaa: debug
+  file: logs/${spring.application.name}.log
+mybatis-plus:
+  type-aliases-package: com.suibuaa.healthcare.user.entity
+  mapper-locations: classpath:/mybatis-mappers/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+  global-config:
+    db-config:
+      id-type: UUID
+    refresh: true
+#security:
+#  oauth2:
+#    client:
+#      access-token-uri: https://hc-gateway:443/api-s/oauth/token
+#    resource:
+#      id: user-center
+#      user-info-uri: https://hc-gateway:443/api-s/security/v1/getCurrentUserAuth
+#      prefer-token-info: false
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000

@@ -31,6 +31,8 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <java.version>1.8</java.version>
     <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
+    <security-oauth2.version>2.3.3.RELEASE</security-oauth2.version>
+    <swagger.version>2.9.2</swagger.version>
   </properties>
 
   <dependencies>

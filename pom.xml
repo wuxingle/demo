@@ -23,6 +23,7 @@
     <module>gateway-center</module>
     <module>security-center</module>
     <module>user-center</module>
+    <module>api-common</module>
   </modules>
 
 
@@ -33,6 +34,9 @@
     <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
     <security-oauth2.version>2.3.3.RELEASE</security-oauth2.version>
     <swagger.version>2.9.2</swagger.version>
+    <guava.version>20.0</guava.version>
+    <orika.version>1.5.2</orika.version>
+    <commons-collections>4.1</commons-collections>
   </properties>
 
   <dependencies>
@@ -48,6 +52,33 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>${guava.version}</version>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>ma.glasnost.orika</groupId>
+      <artifactId>orika-core</artifactId>
+      <version>${orika.version}</version>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-collections4</artifactId>
+      <version>${commons-collections}</version>
+      <optional>true</optional>
     </dependency>
   </dependencies>
 

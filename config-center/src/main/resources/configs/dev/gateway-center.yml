@@ -29,6 +29,14 @@ zuul:
   ribbon:
     eager-load:
       enabled: true
+security:
+  oauth2:
+    client:
+      access-token-uri: http://gateway-center:8992/api-s/oauth/token
+      user-authorization-uri: http://gateway-center:8992/api-s/security/v1/oauth/authorize
+    resource:
+      user-info-uri: http://gateway-center:8992/api-s/security/v1/getCurrentUserAuth
+      prefer-token-info: false
 ribbon:
   ReadTimeout: 10000001
   ConnectTimeout: 10000001

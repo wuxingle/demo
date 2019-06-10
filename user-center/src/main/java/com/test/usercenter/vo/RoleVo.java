@@ -8,9 +8,11 @@ import java.util.List;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class AccreditVo implements Serializable {
-    private String userId;
-    private List<RoleVo> roleList;
+public class RoleVo implements Serializable {
+    private Integer roleId;
+    private String roleName;
+    private String roleCode;
+    private List<PremissionVo> premissionVoList;
 
 
 }

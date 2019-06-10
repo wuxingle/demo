@@ -30,42 +30,6 @@ public class LoginController {
     @Autowired
     private SecurityRemoteClient securityRemoteClient;
 
-//    @PostMapping(value = "/suibuaa/login_old", params = {"phoneNo", "password", "type"}, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-//    public ResultData<LoginUser> login(String phoneNo, String password, String type) {
-//        try {
-//            if (StringUtils.isNotEmpty(phoneNo) && StringUtils.isNotEmpty(password) && StringUtils.isNotEmpty(type)) {
-//                ResultData resultData = userRemoteClient.getUserByPhoneNo(phoneNo);
-//                if (resultData != null) {
-//                    LoginUser loginUser = (LoginUser) resultData.getData();
-//                    if (loginUser != null) {
-//                        if ((Constants.ONE + "").equalsIgnoreCase(type)) { //密码登陆
-//                            if (MD5Util.MD5(password).equalsIgnoreCase(loginUser.getPassword())) {
-//                                return new ResultData<LoginUser>(loginUser);
-//                            } else {
-//                                CustomThrow.throwCustom(StatusCode.PARAMETERR_PASSWORD_ERROR.getErrorCode(),StatusCode.PARAMETERR_PASSWORD_ERROR.getErrorMessage());
-//                            }
-//                        } else if ((Constants.ZERO + "").equalsIgnoreCase(type)) { //验证码登陆
-//                            VerifyCodeVo codeVo = new VerifyCodeVo();
-//                            codeVo.setPhoneNo(phoneNo);
-//                            codeVo.setVerificationCode(password);
-//                            VerifyResultVo verifyResultVo = notificationRemoteClient.checkVerificationCode(codeVo).getData();
-//                            if (verifyResultVo != null && Constants.YES.equalsIgnoreCase(verifyResultVo.getStatus())) {
-//                                return new ResultData<LoginUser>(loginUser);
-//                            } else {
-//                                CustomThrow.throwCustom(StatusCode.PARAMETERR_PASSWORD_ERROR.getErrorCode(),StatusCode.PARAMETERR_PASSWORD_ERROR.getErrorMessage());
-//                            }
-//                        }
-//                    } else {
-//                        CustomThrow.throwCustom(StatusCode.USER_NOT_EXIST.getErrorCode(),StatusCode.USER_NOT_EXIST.getErrorMessage());
-//                    }
-//                }
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return CustomThrow.throwCustom(StatusCode.OPERATE_ERROR.getErrorCode(),StatusCode.OPERATE_ERROR.getErrorMessage());
-//        }
-//        return CustomThrow.throwCustom(StatusCode.OPERATE_ERROR.getErrorCode(),StatusCode.OPERATE_ERROR.getErrorMessage());
-//    }
 
     @PostMapping(value = "/suibuaa/login", params = {"phoneNo", "password", "type"}, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public ResultData login_new(String phoneNo, String password, String type) {

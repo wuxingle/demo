@@ -35,7 +35,7 @@ logging:
     com.suibuaa: debug
   file: logs/${spring.application.name}.log
 mybatis-plus:
-  type-aliases-package: com.suibuaa.healthcare.user.entity
+  type-aliases-package: com.test.usercenter.entity
   mapper-locations: classpath:/mybatis-mappers/*.xml
   configuration:
     map-underscore-to-camel-case: true
@@ -44,14 +44,14 @@ mybatis-plus:
     db-config:
       id-type: UUID
     refresh: true
-#security:
-#  oauth2:
-#    client:
-#      access-token-uri: https://hc-gateway:443/api-s/oauth/token
-#    resource:
-#      id: user-center
-#      user-info-uri: https://hc-gateway:443/api-s/security/v1/getCurrentUserAuth
-#      prefer-token-info: false
+security:
+  oauth2:
+    client:
+      access-token-uri: http://localhost:8992/api-s/oauth/token
+    resource:
+      id: user-center
+      user-info-uri: http://localhost:8992/api-s/security/v1/getCurrentUserAuth
+      prefer-token-info: false
 ribbon:
   ReadTimeout: 10000
   ConnectTimeout: 10000

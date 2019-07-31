@@ -1,0 +1,38 @@
+version: "3"
+
+services:
+  user-center:
+    build: ./user-center
+    image: test/user-center
+    network_mode: "host"
+    restart: always
+    ports:
+      - "8994:8994"
+    environment:
+      - TZ=Asia/Shanghai
+      - server.port=8994
+      - spring.cloud.config.profile=sit
+      - "eureka.client.service-url.defaultZone=http://127.0.0.1:8881/eureka/"
+  security-center:
+    build: ./security-center
+    image: test/security-center
+    network_mode: "host"
+    restart: always
+    ports:
+      - "8993:8993"
+    environment:
+      - TZ=Asia/Shanghai
+      - server.port=8994
+      - spring.cloud.config.profile=sit
+      - "eureka.client.service-url.defaultZone=http://127.0.0.1:8881/eureka/"
+  gateway-center:
+    build: ./gateway-center
+    image: test/gateway-center
+    network_mode: "host"
+    restart: always
+    ports:
+      - "8992:8992"
+    environment:
+      - TZ=Asia/Shanghai
+      - spring.cloud.config.profile=sit
+      - "eureka.client.service-url.defaultZone=http://127.0.0.1:8781/eureka/"

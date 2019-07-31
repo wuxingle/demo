@@ -1,0 +1,24 @@
+version: '3'
+services:
+  register:
+    build: ./register
+    image: test/register
+    restart: always
+    ports:
+      - "8881:8881"
+    network_mode: "host"
+    environment:
+      - TZ=Asia/Shanghai
+  config-center:
+    build: ./config-center
+    image: test/config-center
+    network_mode: "host"
+    restart: always
+    ports:
+      - "8991:8991"
+    depends_on:
+      - 'register'
+    environment:
+      - TZ=Asia/Shanghai
+      - server.port=8891
+      - "eureka.client.service-url.defaultZone=http://127.0.0.1:8881/eureka/"

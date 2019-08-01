@@ -21,4 +21,4 @@ services:
     environment:
       - TZ=Asia/Shanghai
       - server.port=8891
-      - "eureka.client.service-url.defaultZone=http://127.0.0.1:8881/eureka/"
+      - "eureka.client.service-url.defaultZone=http://register:8881/eureka/"
